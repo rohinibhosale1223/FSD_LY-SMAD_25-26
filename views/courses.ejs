@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <%- include('partials/navbar') %>
+    
+    <!-- Page Header -->
+    <section class="bg-gradient-primary text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="display-4 fw-bold">All Courses</h1>
+                    <p class="lead">Discover our comprehensive collection of expert-led courses</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters and Search -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <form method="GET" action="/courses" class="row g-3">
+                                <!-- Search -->
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-search"></i>
+                                        </span>
+                                        <input type="text" class="form-control" name="search" 
+                                               placeholder="Search courses..." value="<%= currentSearch %>">
+                                    </div>
+                                </div>
+
+                                <!-- Category Filter -->
+                                <div class="col-md-3">
+                                    <select class="form-select" name="category">
+                                        <option value="all" <%= currentCategory === 'all' ? 'selected' : '' %>>All Categories</option>
+                                        <% categories.forEach(category => { %>
+                                            <option value="<%= category.category %>" 
+                                                    <%= currentCategory === category.category ? 'selected' : '' %>>
+                                                <%= category.category %>
+                                            </option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+
+                                <!-- Sort -->
+                                <div class="col-md-3">
+                                    <select class="form-select" name="sort">
+                                        <option value="newest" <%= currentSort === 'newest' ? 'selected' : '' %>>Newest First</option>
+                                        <option value="price_low" <%= currentSort === 'price_low' ? 'selected' : '' %>>Price: Low to High</option>
+                                        <option value="price_high" <%= currentSort === 'price_high' ? 'selected' : '' %>>Price: High to Low</option>
+                                        <option value="rating" <%= currentSort === 'rating' ? 'selected' : '' %>>Highest Rated</option>
+                                        <option value="students" <%= currentSort === 'students' ? 'selected' : '' %>>Most Popular</option>
+                                    </select>
+                                </div>
+
+                                <!-- Filter Button -->
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        <i class="fas fa-filter me-1"></i>Filter
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section class="py-5">
+        <div class="container">
+            <% if (courses.length === 0) { %>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="py-5">
+                            <i class="fas fa-search fa-5x text-muted mb-3"></i>
+                            <h3 class="text-muted">No courses found</h3>
+                            <p class="text-muted">Try adjusting your search criteria or browse all courses.</p>
+                            <a href="/courses" class="btn btn-primary">View All Courses</a>
+                        </div>
+                    </div>
+                </div>
+            <% } else { %>
+                <div class="row">
+                    <% courses.forEach(course => { %>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card course-card h-100 shadow-sm">
+                                <img src="<%= course.image %>" class="card-img-top course-image" 
+                                     alt="<%= course.title %>" onerror="this.src='/images/default-course.jpg'">
+                                
+                                <div class="card-body d-flex flex-column">
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary"><%= course.category %></span>
+                                        <span class="badge bg-secondary ms-1"><%= course.level %></span>
+                                    </div>
+                                    
+                                    <h5 class="card-title course-title">
+                                        <a href="/courses/<%= course.id %>" class="text-decoration-none text-dark">
+                                            <%= course.title %>
+                                        </a>
+                                    </h5>
+                                    
+                                    <p class="card-text text-muted small mb-2">
+                                        <i class="fas fa-user me-1"></i>By <%= course.instructor %>
+                                    </p>
+                                    
+                                    <p class="card-text course-description">
+                                        <%= course.description ? course.description.substring(0, 100) + '...' : 'No description available' %>
+                                    </p>
+                                    
+                                    <div class="mt-auto">
+                                        <div class="row align-items-center mb-3">
+                                            <div class="col">
+                                                <div class="d-flex align-items-center mb-1">
+                                                    <div class="rating-stars me-2">
+                                                        <% for (let i = 1; i <= 5; i++) { %>
+                                                            <i class="fas fa-star <%= i <= Math.floor(course.rating) ? 'text-warning' : 'text-muted' %>"></i>
+                                                        <% } %>
+                                                    </div>
+                                                    <small class="text-muted">(<%= course.rating %>)</small>
+                                                </div>
+                                                <small class="text-muted">
+                                                    <i class="fas fa-users me-1"></i><%= course.students.toLocaleString() %> students
+                                                </small>
+                                                <% if (course.duration) { %>
+                                                    <br><small class="text-muted">
+                                                        <i class="fas fa-clock me-1"></i><%= course.duration %>
+                                                    </small>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5 class="text-primary mb-0">₹<%= course.price.toLocaleString() %></h5>
+                                            <a href="/courses/<%= course.id %>" class="btn btn-outline-primary btn-sm">
+                                                View Details
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+
+                <!-- Results Info -->
+                <div class="row mt-4">
+                    <div class="col-12 text-center">
+                        <p class="text-muted">
+                            Showing <%= courses.length %> course<%= courses.length !== 1 ? 's' : '' %>
+                            <% if (currentSearch) { %>
+                                for "<%= currentSearch %>"
+                            <% } %>
+                            <% if (currentCategory !== 'all') { %>
+                                in <%= currentCategory %>
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .course-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .course-image {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .course-title a:hover {
+            color: var(--bs-primary) !important;
+        }
+        
+        .course-description {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .rating-stars i {
+            font-size: 0.8rem;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <%- include('partials/navbar') %>
+    
+    <!-- Page Header -->
+    <section class="bg-gradient-primary text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="display-4 fw-bold">My Courses</h1>
+                    <p class="lead">Continue your learning journey</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Courses Content -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Flash Messages -->
+            <% if (success_msg && success_msg.length > 0) { %>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <%= success_msg %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            <% } %>
+
+            <% if (error_msg && error_msg.length > 0) { %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= error_msg %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            <% } %>
+
+            <% if (courses.length === 0) { %>
+                <!-- Empty State -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-center py-5">
+                            <i class="fas fa-graduation-cap fa-5x text-muted mb-4"></i>
+                            <h3 class="text-muted mb-4">No Courses Enrolled Yet</h3>
+                            <p class="text-muted mb-4">Start your learning journey by exploring our course catalog and enrolling in courses that interest you.</p>
+                            <a href="/courses" class="btn btn-primary btn-lg">
+                                <i class="fas fa-search me-2"></i>Browse Courses
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% } else { %>
+                <!-- Enrolled Courses -->
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <h4>Enrolled Courses (<%= courses.length %>)</h4>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <% courses.forEach(course => { %>
+                        <div class="col-lg-6 col-md-12 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="row g-0 h-100">
+                                    <div class="col-md-4">
+                                        <img src="<%= course.image %>" class="img-fluid rounded-start h-100" 
+                                             alt="<%= course.title %>" style="object-fit: cover; min-height: 200px;"
+                                             onerror="this.src='/images/default-course.jpg'">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body d-flex flex-column h-100">
+                                            <div class="mb-2">
+                                                <span class="badge bg-primary"><%= course.category %></span>
+                                                <span class="badge bg-secondary ms-1"><%= course.level %></span>
+                                            </div>
+                                            
+                                            <h5 class="card-title">
+                                                <a href="/courses/<%= course.id %>" class="text-decoration-none text-dark">
+                                                    <%= course.title %>
+                                                </a>
+                                            </h5>
+                                            
+                                            <p class="card-text text-muted small mb-2">
+                                                <i class="fas fa-user me-1"></i>By <%= course.instructor %>
+                                            </p>
+                                            
+                                            <p class="card-text">
+                                                <%= course.description ? course.description.substring(0, 100) + '...' : 'No description available' %>
+                                            </p>
+                                            
+                                            <div class="mt-auto">
+                                                <!-- Progress Bar -->
+                                                <div class="mb-3">
+                                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                                        <small class="text-muted">Progress</small>
+                                                        <small class="text-muted"><%= course.progress %>%</small>
+                                                    </div>
+                                                    <div class="progress" style="height: 8px;">
+                                                        <div class="progress-bar bg-success" role="progressbar" 
+                                                             data-progress="<%= course.progress %>"
+                                                             aria-valuenow="<%= course.progress %>" 
+                                                             aria-valuemin="0" aria-valuemax="100">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Course Info -->
+                                                <div class="row mb-3">
+                                                    <div class="col-6">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="rating-stars me-2">
+                                                                <% for (let i = 1; i <= 5; i++) { %>
+                                                                    <i class="fas fa-star <%= i <= Math.floor(course.rating) ? 'text-warning' : 'text-muted' %>" style="font-size: 0.8rem;"></i>
+                                                                <% } %>
+                                                            </div>
+                                                            <small class="text-muted">(<%= course.rating %>)</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <small class="text-muted">
+                                                            <i class="fas fa-calendar me-1"></i>
+                                                            Enrolled: <%= new Date(course.enrolled_at).toLocaleDateString() %>
+                                                        </small>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Action Buttons -->
+                                                <div class="d-flex gap-2">
+                                                    <a href="/courses/<%= course.id %>" class="btn btn-primary btn-sm flex-fill">
+                                                        <i class="fas fa-play me-1"></i>Continue Learning
+                                                    </a>
+                                                    <a href="/courses/<%= course.id %>" class="btn btn-outline-secondary btn-sm">
+                                                        <i class="fas fa-info-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+
+                <!-- Learning Stats -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h4>Learning Statistics</h4>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="card text-center bg-primary text-white">
+                            <div class="card-body">
+                                <i class="fas fa-graduation-cap fa-2x mb-2"></i>
+                                <h4><%= courses.length %></h4>
+                                <p class="mb-0">Courses Enrolled</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="card text-center bg-success text-white">
+                            <div class="card-body">
+                                <i class="fas fa-check-circle fa-2x mb-2"></i>
+                                <h4><%= courses.filter(c => c.progress === 100).length %></h4>
+                                <p class="mb-0">Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="card text-center bg-warning text-white">
+                            <div class="card-body">
+                                <i class="fas fa-play-circle fa-2x mb-2"></i>
+                                <h4><%= courses.filter(c => c.progress > 0 && c.progress < 100).length %></h4>
+                                <p class="mb-0">In Progress</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-3">
+                        <div class="card text-center bg-info text-white">
+                            <div class="card-body">
+                                <i class="fas fa-star fa-2x mb-2"></i>
+                                <h4><%= (courses.reduce((sum, c) => sum + c.rating, 0) / courses.length).toFixed(1) %></h4>
+                                <p class="mb-0">Avg. Rating</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="row mt-4">
+                    <div class="col-12 text-center">
+                        <a href="/courses" class="btn btn-outline-primary me-3">
+                            <i class="fas fa-search me-2"></i>Explore More Courses
+                        </a>
+                        <a href="/cart" class="btn btn-outline-secondary">
+                            <i class="fas fa-shopping-cart me-2"></i>View Cart
+                        </a>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Set progress bar widths
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBars = document.querySelectorAll('.progress-bar[data-progress]');
+            progressBars.forEach(function(bar) {
+                const progress = bar.getAttribute('data-progress');
+                bar.style.width = progress + '%';
+            });
+        });
+    </script>
+
+    <style>
+        .card {
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</body>
+</html>

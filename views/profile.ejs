@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <%- include('partials/navbar') %>
+    
+    <!-- Profile Header -->
+    <section class="bg-gradient-primary text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <img src="<%= user.avatar %>" alt="<%= user.name %>" 
+                         class="rounded-circle border border-3 border-white" 
+                         width="100" height="100" onerror="this.src='/images/default-avatar.png'">
+                </div>
+                <div class="col">
+                    <h1 class="display-5 fw-bold mb-2"><%= user.name %></h1>
+                    <p class="lead mb-1"><%= user.email %></p>
+                    <div class="mb-2">
+                        <span class="badge bg-warning me-2"><%= user.role.charAt(0).toUpperCase() + user.role.slice(1) %></span>
+                        <% if (user.profession) { %>
+                            <span class="badge bg-info"><%= user.profession.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase()) %></span>
+                        <% } %>
+                    </div>
+                    <% if (user.bio) { %>
+                        <p class="mb-0 opacity-75"><%= user.bio %></p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Profile Form -->
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h4 class="mb-0">
+                                <i class="fas fa-user-edit me-2"></i>Profile Settings
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <!-- Flash Messages -->
+                            <% if (success_msg && success_msg.length > 0) { %>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <%= success_msg %>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                </div>
+                            <% } %>
+
+                            <% if (error_msg && error_msg.length > 0) { %>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <%= error_msg %>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                </div>
+                            <% } %>
+
+                            <form action="/auth/profile" method="POST">
+                                <!-- Basic Information -->
+                                <h5 class="mb-3 text-primary">
+                                    <i class="fas fa-user-circle me-2"></i>Basic Information
+                                </h5>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label">Full Name</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                                            <input type="text" class="form-control" id="name" name="name" 
+                                                   value="<%= user.name %>" required minlength="2" maxlength="50">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-envelope"></i>
+                                            </span>
+                                            <input type="email" class="form-control" id="email" 
+                                                   value="<%= user.email %>" readonly>
+                                        </div>
+                                        <div class="form-text">Email cannot be changed</div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label">Phone Number</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </span>
+                                            <input type="tel" class="form-control" id="phone" name="phone" 
+                                                   value="<%= user.phone || '' %>" placeholder="Enter your phone number">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="dateOfBirth" class="form-label">Date of Birth</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-calendar"></i>
+                                            </span>
+                                            <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" 
+                                                   value="<%= user.date_of_birth || '' %>">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="gender" class="form-label">Gender</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-venus-mars"></i>
+                                            </span>
+                                            <select class="form-select" id="gender" name="gender">
+                                                <option value="">Select Gender</option>
+                                                <option value="male" <%= user.gender === 'male' ? 'selected' : '' %>>Male</option>
+                                                <option value="female" <%= user.gender === 'female' ? 'selected' : '' %>>Female</option>
+                                                <option value="other" <%= user.gender === 'other' ? 'selected' : '' %>>Other</option>
+                                                <option value="prefer_not_to_say" <%= user.gender === 'prefer_not_to_say' ? 'selected' : '' %>>Prefer not to say</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="role" class="form-label">Role</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-tag"></i>
+                                            </span>
+                                            <input type="text" class="form-control" id="role" 
+                                                   value="<%= user.role.charAt(0).toUpperCase() + user.role.slice(1) %>" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Location Information -->
+                                <h5 class="mb-3 text-primary mt-4">
+                                    <i class="fas fa-map-marker-alt me-2"></i>Location Information
+                                </h5>
+
+                                <div class="mb-3">
+                                    <label for="address" class="form-label">Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-home"></i>
+                                        </span>
+                                        <textarea class="form-control" id="address" name="address" 
+                                                  rows="2" placeholder="Enter your address"><%= user.address || '' %></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="city" class="form-label">City</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-city"></i>
+                                            </span>
+                                            <input type="text" class="form-control" id="city" name="city" 
+                                                   value="<%= user.city || '' %>" placeholder="Enter your city">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="country" class="form-label">Country</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-globe"></i>
+                                            </span>
+                                            <select class="form-select" id="country" name="country">
+                                                <option value="">Select Country</option>
+                                                <option value="US" <%= user.country === 'US' ? 'selected' : '' %>>United States</option>
+                                                <option value="CA" <%= user.country === 'CA' ? 'selected' : '' %>>Canada</option>
+                                                <option value="GB" <%= user.country === 'GB' ? 'selected' : '' %>>United Kingdom</option>
+                                                <option value="AU" <%= user.country === 'AU' ? 'selected' : '' %>>Australia</option>
+                                                <option value="DE" <%= user.country === 'DE' ? 'selected' : '' %>>Germany</option>
+                                                <option value="FR" <%= user.country === 'FR' ? 'selected' : '' %>>France</option>
+                                                <option value="IN" <%= user.country === 'IN' ? 'selected' : '' %>>India</option>
+                                                <option value="JP" <%= user.country === 'JP' ? 'selected' : '' %>>Japan</option>
+                                                <option value="BR" <%= user.country === 'BR' ? 'selected' : '' %>>Brazil</option>
+                                                <option value="MX" <%= user.country === 'MX' ? 'selected' : '' %>>Mexico</option>
+                                                <option value="other" <%= user.country === 'other' ? 'selected' : '' %>>Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Professional Information -->
+                                <h5 class="mb-3 text-primary mt-4">
+                                    <i class="fas fa-briefcase me-2"></i>Professional Information
+                                </h5>
+
+                                <div class="mb-3">
+                                    <label for="profession" class="form-label">Current Profession</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-briefcase"></i>
+                                        </span>
+                                        <select class="form-select" id="profession" name="profession">
+                                            <option value="">Select Profession</option>
+                                            <option value="student" <%= user.profession === 'student' ? 'selected' : '' %>>Student</option>
+                                            <option value="software_developer" <%= user.profession === 'software_developer' ? 'selected' : '' %>>Software Developer</option>
+                                            <option value="designer" <%= user.profession === 'designer' ? 'selected' : '' %>>Designer</option>
+                                            <option value="marketing_professional" <%= user.profession === 'marketing_professional' ? 'selected' : '' %>>Marketing Professional</option>
+                                            <option value="data_scientist" <%= user.profession === 'data_scientist' ? 'selected' : '' %>>Data Scientist</option>
+                                            <option value="business_analyst" <%= user.profession === 'business_analyst' ? 'selected' : '' %>>Business Analyst</option>
+                                            <option value="project_manager" <%= user.profession === 'project_manager' ? 'selected' : '' %>>Project Manager</option>
+                                            <option value="teacher" <%= user.profession === 'teacher' ? 'selected' : '' %>>Teacher/Educator</option>
+                                            <option value="entrepreneur" <%= user.profession === 'entrepreneur' ? 'selected' : '' %>>Entrepreneur</option>
+                                            <option value="consultant" <%= user.profession === 'consultant' ? 'selected' : '' %>>Consultant</option>
+                                            <option value="freelancer" <%= user.profession === 'freelancer' ? 'selected' : '' %>>Freelancer</option>
+                                            <option value="other" <%= user.profession === 'other' ? 'selected' : '' %>>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="interests" class="form-label">Learning Interests</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-heart"></i>
+                                        </span>
+                                        <select class="form-select" id="interests" name="interests" multiple>
+                                            <%
+                                                const userInterests = user.interests ? user.interests.split(', ') : [];
+                                            %>
+                                            <option value="programming" <%= userInterests.includes('programming') ? 'selected' : '' %>>Programming</option>
+                                            <option value="web_development" <%= userInterests.includes('web_development') ? 'selected' : '' %>>Web Development</option>
+                                            <option value="mobile_development" <%= userInterests.includes('mobile_development') ? 'selected' : '' %>>Mobile Development</option>
+                                            <option value="data_science" <%= userInterests.includes('data_science') ? 'selected' : '' %>>Data Science</option>
+                                            <option value="machine_learning" <%= userInterests.includes('machine_learning') ? 'selected' : '' %>>Machine Learning</option>
+                                            <option value="design" <%= userInterests.includes('design') ? 'selected' : '' %>>Design</option>
+                                            <option value="marketing" <%= userInterests.includes('marketing') ? 'selected' : '' %>>Marketing</option>
+                                            <option value="business" <%= userInterests.includes('business') ? 'selected' : '' %>>Business</option>
+                                            <option value="photography" <%= userInterests.includes('photography') ? 'selected' : '' %>>Photography</option>
+                                            <option value="writing" <%= userInterests.includes('writing') ? 'selected' : '' %>>Writing</option>
+                                            <option value="languages" <%= userInterests.includes('languages') ? 'selected' : '' %>>Languages</option>
+                                            <option value="music" <%= userInterests.includes('music') ? 'selected' : '' %>>Music</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-text">Hold Ctrl (Cmd on Mac) to select multiple interests</div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="bio" class="form-label">About Me</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-quote-left"></i>
+                                        </span>
+                                        <textarea class="form-control" id="bio" name="bio" 
+                                                  rows="3" placeholder="Tell us about yourself..." maxlength="500"><%= user.bio || '' %></textarea>
+                                    </div>
+                                    <div class="form-text">Maximum 500 characters</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="joined" class="form-label">Member Since</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="fas fa-calendar"></i>
+                                            </span>
+                                            <input type="text" class="form-control" id="joined" 
+                                                   value="<%= new Date(user.created_at).toLocaleDateString() %>" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save me-2"></i>Update Profile
+                                    </button>
+                                    <a href="/" class="btn btn-outline-secondary">
+                                        <i class="fas fa-arrow-left me-2"></i>Back to Home
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Stats -->
+                <div class="col-lg-4">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="fas fa-chart-bar me-2"></i>Learning Stats
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <div class="mb-4">
+                                    <i class="fas fa-graduation-cap fa-3x text-primary mb-2"></i>
+                                    <h4 class="mb-0">Student Profile</h4>
+                                </div>
+                                
+                                <div class="row text-center">
+                                    <div class="col-6 mb-3">
+                                        <div class="border-end">
+                                            <h5 class="text-primary mb-1">0</h5>
+                                            <small class="text-muted">Courses<br>Enrolled</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h5 class="text-success mb-1">0</h5>
+                                        <small class="text-muted">Courses<br>Completed</small>
+                                    </div>
+                                </div>
+
+                                <div class="row text-center">
+                                    <div class="col-6">
+                                        <div class="border-end">
+                                            <h5 class="text-warning mb-1">0</h5>
+                                            <small class="text-muted">Certificates<br>Earned</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <h5 class="text-info mb-1">0</h5>
+                                        <small class="text-muted">Hours<br>Learned</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="fas fa-bolt me-2"></i>Quick Actions
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-grid gap-2">
+                                <a href="/courses/my/enrolled" class="btn btn-outline-primary">
+                                    <i class="fas fa-book-open me-2"></i>My Courses
+                                </a>
+                                <a href="/courses" class="btn btn-outline-success">
+                                    <i class="fas fa-search me-2"></i>Browse Courses
+                                </a>
+                                <a href="/cart" class="btn btn-outline-warning">
+                                    <i class="fas fa-shopping-cart me-2"></i>View Cart
+                                </a>
+                                <a href="/contact" class="btn btn-outline-info">
+                                    <i class="fas fa-envelope me-2"></i>Contact Support
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include('partials/footer') %>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
