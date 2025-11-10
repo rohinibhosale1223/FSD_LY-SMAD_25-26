@@ -1,0 +1,189 @@
+<!-- Gallery Header -->
+<div class="row mb-5">
+    <div class="col-lg-8 mx-auto text-center">
+        <h1 class="display-5 fw-bold mb-3">Our Photo Gallery</h1>
+        <p class="lead">Discover our curated collection of stunning photographs. Filter by category or browse through all our photos.</p>
+    </div>
+</div>
+
+<!-- Filter Buttons -->
+<div class="filter-buttons justify-content-center mb-5">
+    <button class="filter-btn active" data-filter="all">All Photos</button>
+    <% categories.forEach(category => { %>
+        <button class="filter-btn" data-filter="<%= category.toLowerCase() %>"><%= category %></button>
+    <% }); %>
+</div>
+
+<!-- Photo Grid -->
+<div class="row g-4">
+    <% photos.forEach(photo => { %>
+        <div class="col-md-6 col-lg-4 col-xl-3 photo-item" data-categories="<%= photo.category.toLowerCase() %>">
+            <div class="photo-card h-100">
+                <div class="photo-img-container">
+                    <img 
+                        src="/images/<%= photo.filename %>" 
+                        alt="<%= photo.title %>" 
+                        class="photo-img"
+                        loading="lazy"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#photoModal"
+                        data-title="<%= photo.title %>"
+                        data-category="<%= photo.category %>"
+                        data-price="<%= photo.price.toFixed(2) %>"
+                        data-src="/images/<%= photo.filename %>"
+                    >
+                    <div class="photo-overlay">
+                        <button class="btn btn-outline-light view-photo" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#photoModal"
+                                data-title="<%= photo.title %>"
+                                data-category="<%= photo.category %>"
+                                data-price="<%= photo.price.toFixed(2) %>"
+                                data-src="/images/<%= photo.filename %>">
+                            <i class="fas fa-search-plus me-2"></i> View
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><%= photo.title %></h5>
+                    <p class="card-text text-muted"><%= photo.category %></p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="h5 mb-0">$<%= photo.price.toFixed(2) %></span>
+                        <button class="btn btn-sm btn-primary add-to-cart" data-id="<%= photo.id %>">
+                            <i class="fas fa-cart-plus me-1"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+</div>
+
+<!-- Empty State -->
+<div id="no-results" class="text-center py-5 d-none">
+    <div class="mb-4">
+        <i class="fas fa-images fa-4x text-muted mb-3"></i>
+        <h3>No photos found</h3>
+        <p class="text-muted">Try adjusting your search or filter to find what you're looking for.</p>
+        <button class="btn btn-primary mt-2 filter-btn" data-filter="all">Show All Photos</button>
+    </div>
+</div>
+
+<!-- Photo Modal -->
+<div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="photoModalTitle">Photo Title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <img src="" alt="" class="img-fluid" id="modalPhoto">
+                    </div>
+                    <div class="col-md-4 p-4">
+                        <div class="d-flex flex-column h-100">
+                            <div class="mb-3">
+                                <span class="badge bg-primary mb-2" id="modalCategory">Category</span>
+                                <h4 id="modalTitle">Photo Title</h4>
+                                <p class="text-muted mb-0">High-resolution digital download</p>
+                            </div>
+                            <div class="mt-auto">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h3 class="mb-0" id="modalPrice">Rs.0.00</h3>
+                                    <button class="btn btn-primary add-to-cart" id="modalAddToCart">
+                                        <i class="fas fa-cart-plus me-1"></i> Add to Cart
+                                    </button>
+                                </div>
+                                <div class="d-grid">
+                                    <a href="/cart" class="btn btn-outline-primary">
+                                        <i class="fas fa-shopping-cart me-1"></i> View Cart
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add this script at the bottom of the file -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize photo modal
+    const photoModal = document.getElementById('photoModal');
+    if (photoModal) {
+        photoModal.addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget;
+            const title = button.getAttribute('data-title');
+            const category = button.getAttribute('data-category');
+            const price = button.getAttribute('data-price');
+            const src = button.getAttribute('data-src');
+            
+            const modalTitle = photoModal.querySelector('.modal-title');
+            const modalCategory = photoModal.querySelector('#modalCategory');
+            const modalPrice = photoModal.querySelector('#modalPrice');
+            const modalPhoto = photoModal.querySelector('#modalPhoto');
+            const addToCartBtn = photoModal.querySelector('#modalAddToCart');
+            
+            modalTitle.textContent = title;
+            modalCategory.textContent = category;
+            modalPrice.textContent = `Rs.${price}`;
+            modalPhoto.src = src;
+            modalPhoto.alt = title;
+            
+            // Set up add to cart button
+            const photoId = button.closest('.photo-card')?.querySelector('.add-to-cart')?.dataset.id;
+            if (photoId) {
+                addToCartBtn.onclick = function() {
+                    addToCart(photoId);
+                    const toast = new bootstrap.Toast(document.querySelector('.toast'));
+                    toast.show();
+                };
+            }
+        });
+    }
+    
+    // Handle filter buttons
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const photoItems = document.querySelectorAll('.photo-item');
+    const noResults = document.getElementById('no-results');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            let visibleCount = 0;
+            
+            photoItems.forEach(item => {
+                const categories = item.getAttribute('data-categories');
+                if (filter === 'all' || categories.includes(filter)) {
+                    item.style.display = 'block';
+                    item.classList.add('animate__animated', 'animate__fadeIn');
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            if (noResults) {
+                if (visibleCount === 0) {
+                    noResults.classList.remove('d-none');
+                } else {
+                    noResults.classList.add('d-none');
+                }
+            }
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Scroll to top of gallery
+            document.querySelector('.gallery-container')?.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+});
+</script>
