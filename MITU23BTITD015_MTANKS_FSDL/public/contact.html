@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact MTANKS - Get In Touch</title>
+    <meta name="description" content="Contact MTANKS for technology solutions, learning platform inquiries, or general questions. We're here to help with your digital transformation needs.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-rocket me-2"></i>MTANKS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="plans.html">Plans</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html" id="cartLink">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="badge bg-primary" id="cartBadge">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="min-height: 60vh;">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 class="hero-title" data-aos="fade-up">
+                        Get In <span class="text-gradient">Touch</span>
+                    </h1>
+                    <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                        Ready to start your digital transformation journey? Let's discuss how we can help you achieve your goals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Visit Our Office</h4>
+                        <p>123 Tech Street<br>Bangalore, Karnataka 560001<br>India</p>
+                        <a href="#" class="btn btn-outline-primary">Get Directions</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Call Us</h4>
+                        <p>+91 98765 43210<br>+91 98765 43211<br>Mon-Fri 9AM-6PM IST</p>
+                        <a href="tel:+919876543210" class="btn btn-outline-primary">Call Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email Us</h4>
+                        <p>info@mtanks.com<br>support@mtanks.com<br>sales@mtanks.com</p>
+                        <a href="mailto:info@mtanks.com" class="btn btn-outline-primary">Send Email</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Map -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="contact-form-container">
+                        <h2 class="section-title mb-4">Send Us a <span class="text-gradient">Message</span></h2>
+                        <p class="lead mb-4">Have a project in mind? We'd love to hear from you. Send us a message and we'll respond within 24 hours.</p>
+                        
+                        <form class="contact-form" id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="company" class="form-label">Company Name</label>
+                                <input type="text" class="form-control" id="company" name="company">
+                            </div>
+                            <div class="mb-3">
+                                <label for="service" class="form-label">Service Interested In</label>
+                                <select class="form-select" id="service" name="service">
+                                    <option value="">Select a service</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="mobile-development">Mobile App Development</option>
+                                    <option value="ai-ml">AI & Machine Learning</option>
+                                    <option value="cloud-services">Cloud Services</option>
+                                    <option value="learning-platform">Learning Platform</option>
+                                    <option value="consulting">Technology Consulting</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="budget" class="form-label">Project Budget</label>
+                                <select class="form-select" id="budget" name="budget">
+                                    <option value="">Select budget range</option>
+                                    <option value="under-10k">Under $10,000</option>
+                                    <option value="10k-25k">$10,000 - $25,000</option>
+                                    <option value="25k-50k">$25,000 - $50,000</option>
+                                    <option value="50k-100k">$50,000 - $100,000</option>
+                                    <option value="over-100k">Over $100,000</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="timeline" class="form-label">Project Timeline</label>
+                                <select class="form-select" id="timeline" name="timeline">
+                                    <option value="">Select timeline</option>
+                                    <option value="asap">ASAP</option>
+                                    <option value="1-month">Within 1 month</option>
+                                    <option value="3-months">Within 3 months</option>
+                                    <option value="6-months">Within 6 months</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Project Details *</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Tell us about your project, goals, and any specific requirements..." required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                    <label class="form-check-label" for="newsletter">
+                                        Subscribe to our newsletter for tech insights and updates
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="contact-sidebar">
+                        <div class="sidebar-card">
+                            <h4>Quick Response</h4>
+                            <p>We typically respond to all inquiries within 24 hours during business days.</p>
+                        </div>
+                        
+                        <div class="sidebar-card">
+                            <h4>Free Consultation</h4>
+                            <p>Schedule a free 30-minute consultation to discuss your project requirements.</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Schedule Call</a>
+                        </div>
+                        
+                        <div class="sidebar-card">
+                            <h4>Emergency Support</h4>
+                            <p>For urgent technical issues, call our emergency support line.</p>
+                            <a href="tel:+15551234568" class="btn btn-outline-danger btn-sm">Emergency Line</a>
+                        </div>
+                        
+                        <div class="sidebar-card">
+                            <h4>Follow Us</h4>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="section-title">Frequently Asked <span class="text-gradient">Questions</span></h2>
+                <p class="lead">Common questions about our services and process</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    What is your typical project timeline?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Project timelines vary based on complexity and scope. Simple websites typically take 2-4 weeks, while complex web applications can take 3-6 months. We provide detailed timelines during our initial consultation.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Do you provide ongoing support after project completion?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we offer comprehensive support packages including maintenance, updates, security monitoring, and technical support. Our support plans are flexible and can be customized to your needs.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    What technologies do you specialize in?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We specialize in modern web technologies including React, Vue.js, Angular, Node.js, Python, PHP, and cloud platforms like AWS, Azure, and Google Cloud. We also work with mobile technologies like React Native and Flutter.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Do you offer learning platform customization?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Absolutely! We create fully customized learning management systems tailored to your specific educational needs, including custom features, branding, integrations, and user experience design.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-rocket me-2"></i>MTANKS
+                    </h5>
+                    <p>Transforming businesses through innovative technology solutions and comprehensive learning platforms.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Services</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Web Development</a></li>
+                        <li><a href="#" class="footer-link">Mobile Apps</a></li>
+                        <li><a href="#" class="footer-link">AI Solutions</a></li>
+                        <li><a href="#" class="footer-link">Cloud Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h6 class="fw-bold mb-3">Learning</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="footer-link">Courses</a></li>
+                        <li><a href="#" class="footer-link">Certifications</a></li>
+                        <li><a href="#" class="footer-link">Webinars</a></li>
+                        <li><a href="#" class="footer-link">Community</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h6 class="fw-bold mb-3">Contact Info</h6>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt me-2"></i>123 Tech Street, Bangalore, Karnataka 560001</p>
+                        <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
+                        <p><i class="fas fa-envelope me-2"></i>info@mtanks.com</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 MTANKS. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="footer-link me-3">Privacy Policy</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>
