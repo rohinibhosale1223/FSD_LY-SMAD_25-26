@@ -1,0 +1,166 @@
+<%- include('partials/header', { title: title, currentPage: currentPage }) %>
+
+    <!-- Hero Section -->
+    <section class="py-5" style="background: linear-gradient(135deg, #114847 0%, #aa594e 100%); color: white; margin-top: 80px;">
+        <div class="container text-center">
+            <h1 class="display-5 fw-bold mb-3">Contact Us</h1>
+            <p class="lead">We'd love to hear from you. Get in touch with the ShelfWise team.</p>
+        </div>
+    </section>
+
+    <!-- Contact Information Section -->
+    <section class="py-5" style="background-color: #F9F6EE;">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="text-center h-100">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px; background: linear-gradient(135deg, #aa594e, #d39389);">
+                            <i class="bi bi-envelope-fill text-white" style="font-size: 2rem;"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3" style="color: #114847;">Email Us</h4>
+                        <p class="mb-2" style="color: #666; font-size: 1.1rem;">info@shelfwise.com</p>
+                        <p class="mb-0" style="color: #666;">We'll get back to you within 24 hours</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="text-center h-100">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px; background: linear-gradient(135deg, #114847, #658c5e);">
+                            <i class="bi bi-telephone-fill text-white" style="font-size: 2rem;"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3" style="color: #114847;">Call Us</h4>
+                        <p class="mb-2" style="color: #666; font-size: 1.1rem;">+1 (555) 123-4567</p>
+                        <p class="mb-0" style="color: #666;">Mon-Fri 9AM-6PM EST</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="text-center h-100">
+                        <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style="width: 80px; height: 80px; background: linear-gradient(135deg, #0b3ba2, #aa594e);">
+                            <i class="bi bi-geo-alt-fill text-white" style="font-size: 2rem;"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3" style="color: #114847;">Visit Us</h4>
+                        <p class="mb-2" style="color: #666; font-size: 1.1rem;">123 Book Street</p>
+                        <p class="mb-0" style="color: #666;">Reading City, RC 12345</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-5" style="background-color: white;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold mb-4" style="color: #114847;">Send us a Message</h2>
+                        <p class="lead" style="color: #666;">Have a question, suggestion, or just want to say hello? We're here to help!</p>
+                    </div>
+                    
+                    <div class="card border-0 shadow-lg">
+                        <div class="card-body p-5">
+                            <form method="POST" action="/contact" novalidate>
+                                <div class="row g-4">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label fw-semibold" style="color: #114847;">Your Name *</label>
+                                        <input type="text" class="form-control form-control-lg" id="name" name="name" required 
+                                               style="border: 2px solid #e6e6e6; border-radius: 10px; padding: 15px;"
+                                               placeholder="Enter your full name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="email" class="form-label fw-semibold" style="color: #114847;">Email Address *</label>
+                                        <input type="email" class="form-control form-control-lg" id="email" name="email" required 
+                                               style="border: 2px solid #e6e6e6; border-radius: 10px; padding: 15px;"
+                                               placeholder="Enter your email address">
+                                    </div>
+                                </div>
+                                
+                                <div class="row g-4 mt-2">
+                                    <div class="col-12">
+                                        <label for="subject" class="form-label fw-semibold" style="color: #114847;">Subject *</label>
+                                        <input type="text" class="form-control form-control-lg" id="subject" name="subject" required 
+                                               style="border: 2px solid #e6e6e6; border-radius: 10px; padding: 15px;"
+                                               placeholder="What's this about?">
+                                    </div>
+                                </div>
+                                
+                                <div class="row g-4 mt-2">
+                                    <div class="col-12">
+                                        <label for="message" class="form-label fw-semibold" style="color: #114847;">Your Message *</label>
+                                        <textarea class="form-control" id="message" name="message" rows="6" required 
+                                                  style="border: 2px solid #e6e6e6; border-radius: 10px; padding: 15px; resize: vertical;"
+                                                  placeholder="Tell us what's on your mind..."></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5 py-3" 
+                                            style="border-radius: 25px; font-weight: 600; box-shadow: 0 4px 15px rgba(170, 89, 78, 0.3);">
+                                        <i class="bi bi-send-fill me-2"></i> Send Message
+                                    </button>
+                                </div>
+                                
+                                <div class="text-center mt-3">
+                                    <small class="text-muted">* Required fields</small>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Hours Section -->
+    <section class="py-5" style="background-color: #F9F6EE;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold mb-4" style="color: #114847;">Business Hours</h2>
+                        <p class="lead" style="color: #666;">When you can reach us for support and assistance</p>
+                    </div>
+                    
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="card border-0 h-100 text-center" style="background-color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                <div class="card-body p-4">
+                                    <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; background-color: #aa594e;">
+                                        <i class="bi bi-clock text-white fs-4"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-3" style="color: #114847;">Weekdays</h5>
+                                    <p class="mb-2" style="color: #666; font-weight: 600;">Monday - Friday</p>
+                                    <p class="mb-0" style="color: #666;">9:00 AM - 6:00 PM EST</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border-0 h-100 text-center" style="background-color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                <div class="card-body p-4">
+                                    <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; background-color: #114847;">
+                                        <i class="bi bi-calendar-week text-white fs-4"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-3" style="color: #114847;">Saturday</h5>
+                                    <p class="mb-2" style="color: #666; font-weight: 600;">Weekend Support</p>
+                                    <p class="mb-0" style="color: #666;">10:00 AM - 4:00 PM EST</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card border-0 h-100 text-center" style="background-color: white; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                                <div class="card-body p-4">
+                                    <div class="rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px; background-color: #0b3ba2;">
+                                        <i class="bi bi-moon-stars text-white fs-4"></i>
+                                    </div>
+                                    <h5 class="fw-bold mb-3" style="color: #114847;">Sunday</h5>
+                                    <p class="mb-2" style="color: #666; font-weight: 600;">Rest Day</p>
+                                    <p class="mb-0" style="color: #666;">Closed - Email Support Only</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<%- include('partials/footer') %>
