@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+  </head>
+  <body>
+    <%- include("../partials/header")%>
+
+    <section
+      class="hero-section text-center d-flex flex-column justify-content-center align-items-center bg-dark text-white p-5"
+      style="min-height: 80vh"
+    >
+      <h1 class="display-3 fw-bold">Welcome to TurboTalks</h1>
+      <p class="lead">Your daily dose of Car News, Reviews & Insights</p>
+      <a href="/news" class="btn btn-warning btn-lg mt-3"
+        >Explore Latest News</a
+      >
+    </section>
+
+    <section class="container my-5" id="featured">
+      <div class="text-center mb-5 py-3 featured-title">
+        <h2>🔥 Featured Cars 2025</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="/assets/pagani.jpg"
+              class="card-img-top"
+              alt="Pagani Huyara BC"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center">Pagani Huyara BC</h5>
+              <p class="card-text text-center">
+                A tribute to Pagani's first customer, Benny Caiola, the Huayra
+                BC is an even more extreme iteration of the already formidable
+                Huayra. Its AMG-sourced twin-turbocharged V12 engine is
+                meticulously crafted to deliver breathtaking power. The car's
+                construction is a masterclass in lightweight engineering,
+                featuring advanced carbon-titanium materials. Active
+                aerodynamics, with striking movable flaps, ensures phenomenal
+                downforce and stability. The interior is a bespoke work of art,
+                blending exposed mechanical elements with the finest leathers
+                and carbon fiber.
+              </p>
+              <a href="/reviews" class="btn btn-outline-dark">Read Review</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="/assets/bugatti.jpg"
+              class="card-img-top"
+              alt="Bugatti Divo"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center">Bugatti Divo</h5>
+              <p class="card-text text-center">
+                Crafted for corners, the Bugatti Divo is a coach-built hypercar
+                based on the Chiron, with a focus on aerodynamic efficiency and
+                handling. Its aggressive design, featuring a larger fixed rear
+                wing and numerous air inlets, generates significantly more
+                downforce. While it shares the Chiron's monstrous 8.0-liter
+                quad-turbo W16 engine, the Divo's chassis and suspension are
+                tuned for agility on winding roads. Production was strictly
+                limited to just 40 units, making it an exceptionally rare and
+                coveted machine. The Divo is a testament to Bugatti's ability to
+                create a car that is as thrilling in the bends as it is in a
+                straight line.
+              </p>
+              <a href="/reviews" class="btn btn-outline-dark">Read Review</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="/assets/jesko.jpg"
+              class="card-img-top"
+              alt="Koenigsegg Jesko"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center">Koenigsegg Jesko</h5>
+              <p class="card-text text-center">
+                The Koenigsegg Jesko, a Swedish marvel of engineering, is a
+                hypercar designed for ultimate track performance and high speed.
+                It boasts a re-engineered 5.0-liter twin-turbo V8 engine that
+                can produce up to 1600 horsepower on E85 biofuel. A
+                revolutionary nine-speed multi-clutch Light Speed Transmission
+                allows for instantaneous gear changes. Its advanced
+                aerodynamics, including a massive, active rear wing, provide
+                incredible downforce for superior cornering. The Jesko is a
+                showcase of Koenigsegg's relentless pursuit of innovation and
+                record-breaking speed.
+              </p>
+              <a href="/reviews" class="btn btn-outline-dark">Read Review</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="/assets/bmw.jpg"
+              class="card-img-top"
+              alt="BMW M5 Competition Sport"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center">BMW M5 Competition Sport</h5>
+              <p class="card-text text-center">
+                The BMW M5 CS stands as the most powerful and track-focused M5
+                ever produced by the German automaker. Its 4.4-liter M TwinPower
+                Turbo V8 engine has been tuned to deliver an exhilarating 627
+                horsepower. Extensive use of carbon fiber in the hood, roof, and
+                other components significantly reduces weight, enhancing
+                agility. The M xDrive all-wheel-drive system can be configured
+                for pure rear-wheel-drive hoonery. With its exclusive
+                gold-bronze accents and four individual bucket seats, the M5 CS
+                is a luxurious yet ferociously capable super sedan.
+              </p>
+              <a href="/reviews" class="btn btn-outline-dark">Read Review</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="/assets/amg.jpg"
+              class="card-img-top"
+              alt="Mercedes AMG GTR"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center">Mercedes AMG GTR</h5>
+              <p class="card-text text-center">
+                Nicknamed "The Beast of the Green Hell," the Mercedes-AMG GT R
+                was honed on the demanding Nürburgring Nordschleife. Its
+                handcrafted 4.0-liter biturbo V8 engine produces a thunderous
+                soundtrack and immense power. An advanced nine-mode traction
+                control system, derived from motorsport, allows drivers to
+                fine-tune the car's handling characteristics. The GT R's
+                aggressive aerodynamics, including a large rear wing and active
+                front grille shutters, provide exceptional grip. This car
+                represents the pinnacle of AMG's performance-oriented
+                engineering for the road and track.
+              </p>
+              <a href="/reviews" class="btn btn-outline-dark">Read Review</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img src="/assets/rs7.jpg" class="card-img-top" alt="Audi RS7" />
+            <div class="card-body">
+              <h5 class="card-title text-center">Audi RS7</h5>
+              <p class="card-text text-center">
+                The Audi RS7 is a high-performance sportback that seamlessly
+                blends blistering speed with everyday usability. Its potent
+                4.0-liter twin-turbo V8 engine delivers startling acceleration,
+                complemented by Audi's legendary Quattro all-wheel-drive system.
+                The RS adaptive air suspension provides a dynamic driving
+                experience, balancing comfort and sharp handling. Its sleek,
+                coupe-like design conceals a spacious and luxurious interior
+                equipped with cutting-edge technology. The RS7 is the
+                quintessential grand tourer, capable of crossing continents at
+                pace and in style.
+              </p>
+              <a href="/reviews" class="btn btn-outline-dark">Read Review</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container my-5 cards-section">
+      <div class="row text-center g-4">
+        <div class="col-md-4">
+          <div class="card-custom h-100">
+            <h3>📰 Latest News</h3>
+            <p>Catch up on the hottest updates in the auto world.</p>
+            <a href="/news" class="btn btn-dark">View News</a>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card-custom h-100">
+            <h3>📝 Expert Reviews</h3>
+            <p>In-depth reviews and first-hand experiences with top cars.</p>
+            <a href="/reviews" class="btn btn-dark">View Reviews</a>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card-custom h-100">
+            <h3>📸 Car Gallery</h3>
+            <p>Stunning images of supercars, classics, and concept cars.</p>
+            <a href="/gallery" class="btn btn-dark">View Gallery</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter py-5">
+      <div class="container">
+        <div
+          class="card shadow-lg border-0 rounded-4 mx-auto"
+          style="max-width: 700px"
+        >
+          <div class="card-body text-center p-5">
+            <h3 class="fw-bold mb-3">Stay Updated with TurboTalks 🚗</h3>
+            <p class="text-muted mb-4">
+              Join our mailing list to get the latest car news, reviews, and
+              insights delivered to your inbox.
+            </p>
+            <form class="row g-2 justify-content-center">
+              <div class="col-12 col-md-8">
+                <input
+                  type="email"
+                  class="form-control form-control-lg rounded-pill"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div class="col-12 col-md-3">
+                <button class="btn btn-warning btn-lg w-100 rounded-pill">
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include("../partials/footer") %>
+  </body>
+</html>

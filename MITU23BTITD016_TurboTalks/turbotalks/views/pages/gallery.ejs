@@ -1,0 +1,75 @@
+<%- include("../partials/head") %>
+<body style="background-color: #FF7244; color: #fff; font-family: 'Poppins', sans-serif;">
+
+  <%- include("../partials/header") %>
+
+  <div class="container py-5">
+    <h1 class="text-center fw-bold mb-5 text-white display-5">Car Galleries</h1>
+    <section class="mb-5">
+      <h2 class="text-center text-dark fw-bold mb-4 bg-white py-2 rounded-3 shadow-sm">Mercedes Maybach</h2>
+      <div class="row justify-content-center">
+        <% const maybachImages = ["maybach1.jpg", "maybach2.jpg", "maybach3.jpg", "maybach4.jpg", "maybach5.jpg", "maybach6.jpg"]; %>
+        <% maybachImages.forEach(img => { %>
+          <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden gallery-card" onclick="openModal('/assets/<%= img %>')">
+              <img src="/assets/<%= img %>" class="card-img-top gallery-img" alt="Maybach Car">
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="text-center text-dark fw-bold mb-4 bg-white py-2 rounded-3 shadow-sm">BMW //M Series</h2>
+      <div class="row justify-content-center">
+        <% const bmwImages = ["bmw1.jpg", "bmw2.jpg", "bmw3.jpg", "bmw4.jpg", "bmw5.jpg", "bmw6.jpg"]; %>
+        <% bmwImages.forEach(img => { %>
+          <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden gallery-card" onclick="openModal('/assets/<%= img %>')">
+              <img src="/assets/<%= img %>" class="card-img-top gallery-img" alt="BMW Car">
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <section class="mb-5">
+      <h2 class="text-center text-dark fw-bold mb-4 bg-white py-2 rounded-3 shadow-sm">Pagani</h2>
+      <div class="row justify-content-center">
+        <% const paganiImages = ["pagani1.jpg", "pagani2.jpg", "pagani3.jpg", "pagani4.jpg", "pagani5.jpg", "pagani6.jpg"]; %>
+        <% paganiImages.forEach(img => { %>
+          <div class="col-md-4 col-sm-6 mb-4">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden gallery-card" onclick="openModal('/assets/<%= img %>')">
+              <img src="/assets/<%= img %>" class="card-img-top gallery-img" alt="Pagani Car">
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  </div>
+
+  <div id="myModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white border-0">
+        <div class="modal-body p-0">
+          <img id="modalImage" src="" class="img-fluid rounded-3" alt="Car Image">
+        </div>
+        <div class="modal-footer border-0 justify-content-center">
+          <button type="button" class="btn btn-light px-4 rounded-5" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include("../partials/footer") %>
+
+  <script>
+    function openModal(imageSrc) {
+      document.getElementById("modalImage").src = imageSrc;
+      const myModal = new bootstrap.Modal(document.getElementById("myModal"));
+      myModal.show();
+    }
+  </script>
+
+</body>
+</html>

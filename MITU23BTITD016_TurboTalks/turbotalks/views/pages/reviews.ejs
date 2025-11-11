@@ -1,0 +1,85 @@
+<%- include("../partials/head") %>
+<body style="background-color: #FF7244; color: #fff; font-family: 'Poppins', sans-serif;">
+
+  <%- include("../partials/header") %>
+
+  <section class="hero text-center text-white d-flex align-items-center justify-content-center position-relative">
+    <div class="overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 0, 0, 0.4);"></div>
+    <div class="hero-content position-relative z-2">
+      <h1 class="display-4 fw-bold">Car Reviews & Comparisons</h1>
+      <p class="lead">Honest opinions, real performance – straight from the auto world</p>
+    </div>
+  </section>
+
+  <div class="container my-5">
+    <div class="card bg-dark text-white border-0 rounded-4 overflow-hidden shadow-lg">
+      <img src="/assets/autoexpo.jpg" class="card-img-top" style="height:380px; object-fit:contain;">
+      <div class="card-body">
+        <h2 class="fw-bold text-warning">AUTO EXPO 2023 – The Biggest Auto Extravaganza</h2>
+        <p>
+          A signature event bringing together the latest automotive products, technologies,
+          concepts and futuristic trends from global manufacturers.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <h3 class="fw-bold border-bottom pb-2">Latest Video Reviews</h3>
+    <div class="row g-4">
+
+      <% reviewsList.forEach(review => { %>
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-lg rounded-4 h-100 border-0">
+          <div class="ratio ratio-16x9">
+            <iframe src="<%= review.video %>" allowfullscreen></iframe>
+          </div>
+          <div class="card-body bg-white">
+            <h5 class="fw-bold text-dark"><%= review.title %></h5>
+            <p class="text-muted"><%= review.desc %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <div class="card bg-dark text-white border-0 rounded-4 overflow-hidden shadow-lg">
+      <img src="/assets/comparison.jpeg" class="card-img-top" style="height:350px; object-fit:contain;">
+      <div class="card-body">
+        <h2 class="fw-bold text-warning">Compare Cars 2024</h2>
+        <p>
+          Make smart decisions with our detailed car comparison tool covering price, power,
+          mileage, features & complete specifications.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <h3 class="fw-bold border-bottom pb-2">Comparison Reviews</h3>
+    <div class="row g-4">
+
+      <% compareList.forEach(comp => { %>
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-lg rounded-4 h-100 border-0">
+          <div class="ratio ratio-16x9">
+            <iframe src="<%= comp.video %>" allowfullscreen></iframe>
+          </div>
+          <div class="card-body bg-white">
+            <h5 class="fw-bold text-dark"><%= comp.title %></h5>
+            <p class="text-muted"><%= comp.desc %></p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+
+    </div>
+  </div>
+
+  <%- include("../partials/footer") %>
+
+</body>
+</html>

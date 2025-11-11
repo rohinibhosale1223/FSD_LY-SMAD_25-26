@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+
+    <style>
+      body {
+        background-color: #ff7244;
+        color: #ffffff;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .cart-container {
+        margin-top: 80px;
+      }
+
+      .cart-card {
+        background: #ffffff;
+        color: #000;
+        border-radius: 15px;
+        overflow: hidden;
+        padding: 15px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        display: flex;
+        align-items: center;
+      }
+
+      .cart-card img {
+        width: 120px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-right: 20px;
+      }
+
+      .price {
+        font-weight: bold;
+        color: #ff7244;
+      }
+
+      .remove-btn {
+        background-color: #ff0000;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: 0.2s ease;
+      }
+
+      .remove-btn:hover {
+        background-color: #a70000;
+      }
+
+      h2 {
+        font-weight: 700;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .empty-msg {
+        text-align: center;
+        padding: 50px;
+        font-size: 22px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <%- include("../partials/header") %>
+
+    <div class="container cart-container">
+      <h2 class="text-center mb-4">🛒 Your Cart Items</h2>
+
+      <div id="cartItemsContainer"></div>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script>
+      function removeItem(productName) {
+        let cartItems = JSON.parse(localStorage.getItem("cart2"));
+        cartItems = cartItems.filter((item) => item.name !== productName);
+        localStorage.setItem("cart2", JSON.stringify(cartItems));
+        displayCart();
+      }
+
+      function displayCart() {
+        const cartItems = JSON.parse(localStorage.getItem("cart2")) || [];
+        const container = document.getElementById("cartItemsContainer");
+
+        container.innerHTML = "";
+
+        if (cartItems.length === 0) {
+          container.innerHTML = `<p class="empty-msg">Your cart is empty 🚗💨<br><a href="/products" class="btn btn-dark mt-3">Shop Now</a></p>`;
+        }
+
+        cartItems.forEach((item) => {
+          const element = document.createElement("div");
+          element.className = "cart-card mb-3";
+
+          element.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    
+                    <div class="flex-grow-1">
+                        <h5 class="fw-bold">${item.name}</h5>
+                        <p class="price">₹ ${item.price}</p>
+                    </div>
+
+                    <button class="remove-btn" onclick="removeItem('${item.name}')">Remove</button>
+                `;
+
+          container.appendChild(element);
+        });
+
+        updateCartCount(cartItems.length);
+      }
+
+      function updateCartCount(count) {
+        const badge = document.querySelector(".cart-count");
+        if (badge) badge.textContent = `Cart (${count})`;
+      }
+
+      window.onload = displayCart;
+    </script>
+  </body>
+</html>

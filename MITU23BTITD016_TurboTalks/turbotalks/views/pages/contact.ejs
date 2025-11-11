@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+    <style>
+      body {
+        background-color: #ff7244;
+      }
+
+      .hero-contact {
+        min-height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+
+      .contact-section {
+        max-width: 700px;
+        margin: -50px auto 50px auto;
+      }
+
+      .contact-card {
+        border-radius: 15px;
+        padding: 40px 30px;
+        background-color: #fff;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .contact-card h2 {
+        font-weight: 700;
+        margin-bottom: 25px;
+        color: #ff7244;
+      }
+
+      .contact-card .form-control:focus {
+        box-shadow: 0 0 5px #ff7244;
+        border-color: #ff7244;
+      }
+
+      .contact-card button {
+        background-color: #ff7244;
+        border: none;
+      }
+
+      .contact-card button:hover {
+        background-color: #e65c30;
+      }
+
+      .social-links {
+        margin-top: 25px;
+        text-align: center;
+      }
+
+      .social-links a {
+        margin: 0 10px;
+        font-size: 1.5rem;
+        color: #ff7244;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: #e65c30;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("../partials/header") %>
+
+    <section class="hero-contact">
+      <div class="container">
+        <h1>Get in Touch with TurboTalks</h1>
+        <p class="lead">Have questions or suggestions? Drop me a message!</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-card">
+          <h2>Contact Me</h2>
+          <form action="/send-message" method="POST">
+            <div class="mb-3">
+              <label for="name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                class="form-control"
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-lg w-100 text-white">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <%- include("../partials/footer") %>
+  </body>
+</html>

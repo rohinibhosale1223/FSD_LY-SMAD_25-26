@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("../partials/head") %>
+
+    <style>
+      body {
+        background-color: #ff7244;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .product-card {
+        border: none;
+        background: #ffffff;
+        border-radius: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .product-card img {
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .price {
+        font-weight: bold;
+        color: #ff7244;
+      }
+
+      .btn-dark {
+        background-color: #000;
+        border-radius: 30px;
+        font-weight: 600;
+      }
+
+      h2 {
+        font-weight: 700;
+        text-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+
+  <body>
+    <%- include("../partials/header") %>
+
+    <section class="hero text-center">
+      <h1 class="display-5 fw-bold mt-4">Car Spare Parts & Accessories</h1>
+      <p class="lead">Premium auto parts to boost performance & style 🚗🔥</p>
+    </section>
+
+    <div class="container my-5">
+      <div class="row g-4">
+        <% const products = [ { name: 'Brake', price: 2400, image:
+        '/assets/brake.jpg' }, { name: 'Engine Oil', price: 1000, image:
+        '/assets/oil.webp' }, { name: 'Clutch', price: 4300, image:
+        '/assets/clutch.jpg' }, { name: 'Filter', price: 2100, image:
+        '/assets/filter.jpg' }, { name: 'Side Mirror', price: 1870, image:
+        '/assets/mirror.jpg' }, { name: 'Steering Wheel', price: 5600, image:
+        '/assets/steering.jpg' } ]; %> <% products.forEach(p => { %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card product-card">
+            <img src="<%= p.image %>" alt="<%= p.name %>" />
+            <div class="card-body text-dark">
+              <h5 class="card-title fw-bold"><%= p.name %></h5>
+              <p class="card-text small text-muted">
+                Top-quality OEM replacement part
+              </p>
+              <p class="price">₹ <%= p.price %></p>
+              <button
+                class="btn btn-dark w-100"
+                onclick="addToCart('<%= p.name %>', <%= p.price %>, '<%= p.image %>')"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+
+    <script>
+      let cart2 = JSON.parse(localStorage.getItem("cart2")) || [];
+
+      function updateCart() {
+        const cartBadge = document.querySelector(".cart-count");
+        if (cartBadge) cartBadge.textContent = `(${cart2.length})`;
+      }
+
+      function addToCart(name, price, image) {
+        cart2.push({ name, price, image });
+        localStorage.setItem("cart2", JSON.stringify(cart2));
+        updateCart();
+      }
+
+      window.onload = updateCart;
+    </script>
+  </body>
+</html>
