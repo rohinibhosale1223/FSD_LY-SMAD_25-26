@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= pageTitle %></title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- AOS Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0e0e0e;
+      color: #f8f9fa;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(20, 20, 20, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+      transition: background 0.4s ease;
+    }
+    .navbar-brand {
+      font-size: 1.6rem;
+      color: #00aaff !important;
+      font-weight: 700;
+    }
+    .nav-link {
+      color: #f8f9fa !important;
+      margin: 0 8px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #00aaff !important;
+    }
+
+    /* Hero Section */
+    header {
+      background: linear-gradient(180deg, #111, #222);
+      padding: 6rem 1rem;
+      text-align: center;
+      color: #fff;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      text-shadow: 0 3px 10px rgba(0, 170, 255, 0.4);
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+    header .btn {
+      background-color: #00aaff;
+      border: none;
+      font-weight: 600;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+    header .btn:hover {
+      transform: scale(1.1);
+      background-color: #007acc;
+    }
+
+    /* Section Titles */
+    section h2 {
+      color: #00aaff;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    /* Game Cards */
+    .game-card {
+      background: #1b1b1b;
+      border: none;
+      border-radius: 14px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      overflow: hidden;
+    }
+    .game-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 35px rgba(0, 170, 255, 0.4);
+    }
+    .game-card img {
+      border-radius: 14px 14px 0 0;
+    }
+
+    /* News Cards */
+    .news-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 1.5rem;
+      height: 100%;
+      transition: transform 0.4s ease, background 0.3s ease;
+    }
+    .news-card:hover {
+      transform: translateY(-8px);
+      background: #232323;
+    }
+
+    .news-card h4 {
+      color: #00aaff;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Stats */
+    .stats {
+      background: linear-gradient(90deg, #0e0e0e, #1c1c1c);
+      padding: 4rem 1rem;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+    }
+    .stats h3 {
+      font-size: 2.4rem;
+      color: #00aaff;
+    }
+    .stats p {
+      color: #bbb;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #1b1b1b;
+      color: #bbb;
+      padding: 1.5rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Scroll animation delay for cards */
+    [data-aos] {
+      transition-property: transform, opacity;
+      transition-duration: 1s;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      header h1 { font-size: 2.2rem; }
+      header p { font-size: 1rem; }
+    }
+
+    @media (max-width: 576px) {
+      header { padding: 3rem 1rem; }
+      header h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">🎮 GameZone</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+          <li class="nav-item"><a class="nav-link" href="/shop">Shop</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header data-aos="fade-down">
+    <div class="container">
+      <h1>Welcome to GameZone</h1>
+      <p>Your one-stop hub for new releases, offers & industry buzz.</p>
+      <a href="/shop" class="btn btn-lg text-white">Shop Now</a>
+    </div>
+  </header>
+
+  <!-- Featured Games -->
+  <section class="container py-5">
+    <h2 data-aos="zoom-in">🔥 Featured Games</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4 col-sm-6" data-aos="fade-up">
+        <div class="card game-card">
+          <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co7497.webp" alt="Cyberpunk 2077" />
+          <div class="card-body text-center">
+            <h5>Cyberpunk 2077</h5>
+            <p>$59.99</p>
+            <a href="/cart" class="btn btn-primary">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+        <div class="card game-card">
+          <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co5snb.webp" alt="Elden Ring" />
+          <div class="card-body text-center">
+            <h5>Elden Ring</h5>
+            <p>$69.99</p>
+            <a href="/cart" class="btn btn-primary">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="card game-card">
+          <img src="https://images.igdb.com/igdb/image/upload/t_cover_big/co5e3v.webp" alt="God of War Ragnarok" />
+          <div class="card-body text-center">
+            <h5>God of War: Ragnarok</h5>
+            <p>$49.99</p>
+            <a href="/cart" class="btn btn-primary">Add to Cart</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News -->
+  <section class="container py-5">
+    <h2 data-aos="zoom-in">📰 Gaming News</h2>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" data-aos="fade-right">
+        <div class="news-card">
+          <h4>🎮 GTA VI Trailer Drops Soon</h4>
+          <p>Rockstar confirms the official GTA VI trailer release. Expect cutting-edge visuals and insane realism!</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-up">
+        <div class="news-card">
+          <h4>🕹️ Esports World Cup 2025</h4>
+          <p>Get ready for the ultimate showdown — top teams compete across Valorant, Fortnite, and Apex Legends.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6" data-aos="fade-left">
+        <div class="news-card">
+          <h4>👾 Streamer Spotlight: Valkyrae</h4>
+          <p>Valkyrae’s charity stream shatters records, proving gaming is more than competition — it’s community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats text-center" data-aos="fade-up">
+    <div class="container">
+      <h2>📊 Industry Highlights</h2>
+      <div class="row g-4">
+        <div class="col-md-3 col-6"><h3>$200B+</h3><p>Revenue</p></div>
+        <div class="col-md-3 col-6"><h3>3.2B+</h3><p>Gamers</p></div>
+        <div class="col-md-3 col-6"><h3>10K+</h3><p>Games in 2025</p></div>
+        <div class="col-md-3 col-6"><h3>95%</h3><p>Growth Rate</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 GameZone. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
+</body>
+</html>

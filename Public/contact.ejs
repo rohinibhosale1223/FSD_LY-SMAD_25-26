@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - GameZone</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+    .navbar {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: background 0.4s ease;
+    }
+    .navbar:hover {
+      background: rgba(0,0,0,0.95);
+    }
+
+    .nav-link {
+      position: relative;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover {
+      color: #0d6efd !important;
+    }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #0d6efd;
+      left: 0;
+      bottom: 0;
+      transition: width 0.3s ease;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    header {
+      background: linear-gradient(135deg, #0d6efd, #6610f2);
+      color: #fff;
+      text-align: center;
+      padding: 6rem 1rem;
+      animation: fadeInDown 1.2s ease-in-out;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      animation: slideIn 1s ease-in-out;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    /* Contact Section */
+    section {
+      animation: fadeUp 1.5s ease-in-out;
+    }
+
+    form {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    form:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 30px rgba(13,110,253,0.3);
+    }
+
+    .form-control {
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .form-control:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 5px #0d6efd;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0d6efd, #6610f2);
+      border: none;
+      transition: transform 0.3s ease, background 0.3s ease;
+      font-weight: 600;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #6610f2, #0d6efd);
+      transform: scale(1.05);
+    }
+
+    iframe {
+      border-radius: 12px;
+      filter: grayscale(0.1);
+      transition: filter 0.3s ease;
+    }
+    iframe:hover {
+      filter: grayscale(0);
+    }
+
+    /* Footer */
+    footer {
+      background: #000;
+      color: #ccc;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">🎮 GameZone</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        title="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/cart">Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <div class="container">
+      <h1 class="fw-bold">Contact Us</h1>
+      <p class="lead">We’d love to hear from you. Let’s level up your gaming experience!</p>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="container py-5">
+    <div class="row g-4 align-items-center">
+      <!-- Contact Form -->
+      <div class="col-md-7">
+        <h2 class="fw-bold mb-4">Send Us a Message</h2>
+        <form id="contactForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your full name" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="5" placeholder="Type your message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Send Message 🚀</button>
+        </form>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-md-5 text-light">
+        <h2 class="fw-bold mb-4">Get in Touch</h2>
+        <ul class="list-unstyled">
+          <li class="mb-3">
+            <strong>📍 Address:</strong><br />
+            123 Gaming Street, Pune, India
+          </li>
+          <li class="mb-3">
+            <strong>📧 Email:</strong><br />
+            support@gamezone.com
+          </li>
+          <li class="mb-3">
+            <strong>📞 Phone:</strong><br />
+            +91 98765 43210
+          </li>
+        </ul>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.0076!2d73.8567!3d18.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c067bb0b!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1670000000000"
+          width="100%"
+          height="250"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-3">
+    <p class="mb-0">&copy; 2025 GameZone. All rights reserved 🎮</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Animation for form submission -->
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("🎉 Thanks for contacting GameZone! We’ll get back to you soon.");
+    });
+  </script>
+</body>
+</html>
