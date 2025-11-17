@@ -1,0 +1,64 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+
+<section class="products-section">
+  <h2>Our Products</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="/image/rrp.jpg" alt="RR">
+      <h3>Red Rooster Performance Exhaust</h3>
+      <p>Performance Exhaust systems for motorcycles which are designed to increase power and torque, reduce weight, and provide a distinctive sound</p>
+      <p class="price">₹20,000</p>
+      <form action="/add-to-cart" method="POST">
+        <input type="hidden" name="name" value="Red Rooster Performance Exhaust">
+        <input type="hidden" name="price" value="20000">
+        <input type="hidden" name="image" value="/image/rrp.jpg">
+        <button type="submit" class="btn-buy">🛒 Buy Now</button>
+      </form>
+    </div>
+
+    <div class="product-card">
+      <img src="/image/sunglasses.jpg" alt="Sunglasses">
+      <h3>Riding Sunglasses</h3>
+      <p>Stylish UV-protected sunglasses for bikers.</p>
+      <p class="price">₹1,200</p>
+      <form action="/add-to-cart" method="POST">
+        <input type="hidden" name="name" value="Riding Sunglasses">
+        <input type="hidden" name="price" value="1200">
+        <input type="hidden" name="image" value="/image/sunglasses.jpg">
+        <button type="submit" class="btn-buy">🛒 Buy Now</button>
+      </form>
+    </div>
+
+    <div class="product-card">
+      <img src="/image/helmet.jpg" alt="Helmet">
+      <h3>Full-Face Helmet</h3>
+      <p>IS-certified helmet for safe rides.</p>
+      <p class="price">₹4,500</p>
+      <form action="/add-to-cart" method="POST">
+        <input type="hidden" name="name" value="Full-Face Helmet">
+        <input type="hidden" name="price" value="4500">
+        <input type="hidden" name="image" value="/image/helmet.jpg">
+        <button type="submit" class="btn-buy">🛒 Buy Now</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<%- include('../partials/footer') %>
+<script>
+document.querySelectorAll('.buy-btn').forEach(button => {
+  button.addEventListener('click', async e => {
+    e.preventDefault();
+    const form = e.target.closest('form');
+    const formData = new FormData(form);
+
+    await fetch('/add-to-cart', {
+      method: 'POST',
+      body: formData
+    });
+
+    alert('Added to cart!');
+  });
+});
+</script>
