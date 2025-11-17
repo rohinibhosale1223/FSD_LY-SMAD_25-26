@@ -1,0 +1,24 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="home-container galaxy-background">
+  <div class="container-fluid d-flex mt-2 mb-5 justify-content-center">
+    <div class="text-center" data-aos="fade-up">
+      <img src="/images/logo.png" width="250" height="250">
+      <h1 class="display-1 neon-text glitch-text">CRITICAL HIT</h1>
+      <p class="lead neon-subtext mb-2">Welcome, <strong><%= username %></strong>!</p>
+      <p class="lead neon-subtext mb-2">Your Ultimate Game Review Portal</p>
+      <p class="tagline neon-subtext">Discover. Review. Dominate.</p>
+      
+      <div class="mt-3 mb-5">
+        <a href="/reviews" class="btn neon-button btn-lg me-3" data-aos="fade-right">Explore Reviews</a>
+        <a href="/about" class="btn neon-button-secondary btn-lg" data-aos="fade-left">Learn More</a>
+        <% if (username !== 'Guest') { %>
+          <a href="/logout" class="btn btn-danger btn-lg ms-3" data-aos="fade-left">Logout</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,30 @@
+{
+  "name": "critical-hit",
+  "version": "1.0.0",
+  "description": "A futuristic and gamified website for exploring and posting game reviews",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.18.2",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "game",
+    "reviews",
+    "portal",
+    "gamified"
+  ],
+  "author": "Critical Hit Team",
+  "license": "MIT"
+}

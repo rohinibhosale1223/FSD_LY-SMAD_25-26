@@ -1,0 +1,72 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="contact-container galaxy-background">
+  <div class="container py-5">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h1 class="neon-text">CONTACT US</h1>
+      <p class="neon-subtext">Get in touch with the Critical Hit team</p>
+    </div>
+    
+    <div class="row">
+      <div class="col-lg-6 mb-5">
+        <div class="glass-card h-100" data-aos="fade-right">
+          <h2 class="neon-text">Get In Touch</h2>
+          <p class="neon-subtext">
+            Have questions, feedback, or suggestions? We'd love to hear from you! 
+            Reach out to us through any of the following channels.
+          </p>
+          
+          <div class="contact-info mt-4">
+            <div class="info-item mb-4">
+              <h4 class="neon-text"><i class="neon-icon">📧</i> Email</h4>
+              <p class="neon-subtext">contact@criticalhit.games</p>
+            </div>
+            
+            <div class="info-item mb-4">
+              <h4 class="neon-text"><i class="neon-icon">📱</i> Social Media</h4>
+              <div class="social-links">
+                <a href="#" class="neon-hover me-3">Twitter</a>
+                <a href="#" class="neon-hover me-3">Facebook</a>
+                <a href="#" class="neon-hover me-3">Instagram</a>
+                <a href="#" class="neon-hover">Discord</a>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <h4 class="neon-text"><i class="neon-icon">📍</i> Headquarters</h4>
+              <p class="neon-subtext">123 Gaming Street, Digital City, DC 10001</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6">
+        <div class="glass-card h-100" data-aos="fade-left">
+          <h2 class="neon-text">Send a Message</h2>
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label neon-label">Name</label>
+              <input type="text" class="form-control neon-input" id="name" placeholder="Your name">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label neon-label">Email</label>
+              <input type="email" class="form-control neon-input" id="email" placeholder="Your email">
+            </div>
+            <div class="mb-3">
+              <label for="subject" class="form-label neon-label">Subject</label>
+              <input type="text" class="form-control neon-input" id="subject" placeholder="Subject">
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label neon-label">Message</label>
+              <textarea class="form-control neon-input" id="message" rows="5" placeholder="Your message"></textarea>
+            </div>
+            <button type="submit" class="btn neon-button">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

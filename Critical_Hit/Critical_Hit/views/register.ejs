@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+
+<div class="register-container galaxy-background">
+  <div class="register-form glass-card" data-aos="zoom-in">
+    <div class="text-center mb-4">
+      <h1 class="neon-text">REGISTER</h1>
+      <p class="neon-subtext">Join the Critical Hit Community</p>
+    </div>
+    
+    <% if (error) { %>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+    
+    <form method="POST" action="/register">
+      <div class="mb-3">
+        <label for="username" class="form-label neon-label">Username</label>
+        <input type="text" class="form-control neon-input" id="username" name="username" placeholder="Choose a username" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label neon-label">Email</label>
+        <input type="email" class="form-control neon-input" id="email" name="email" placeholder="Enter your email">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label neon-label">Password</label>
+        <input type="password" class="form-control neon-input" id="password" name="password" placeholder="Create a password" required>
+      </div>
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label neon-label">Confirm Password</label>
+        <input type="password" class="form-control neon-input" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn neon-button">Register</button>
+        <a href="/" class="btn neon-button-outline">Back to Login</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

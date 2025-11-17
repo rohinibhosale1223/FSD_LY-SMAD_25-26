@@ -1,0 +1,9 @@
+{
+  "name": "critical-hit-root",
+  "version": "1.0.0",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node Critical_Hit/app.js"
+  }
+}

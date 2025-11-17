@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="store-container galaxy-background">
+  <div class="container">
+    <div class="store-header" data-aos="fade-up">
+      <h1 class="store-title">Game Store</h1>
+      <p class="store-subtitle neon-subtext" data-aos="fade-up" data-aos-delay="100">Browse our collection of amazing games and add them to your cart</p>
+    </div>
+    
+    <div class="games-grid" data-aos="fade-up" data-aos-delay="200">
+      <!-- Game Cards will be populated by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<!-- Cart Modal -->
+<div id="cartModal" class="cart-modal">
+  <div class="cart-modal-content glass-card">
+    <div class="cart-header">
+      <h2 class="neon-text">Your Cart</h2>
+      <button class="close-btn" id="closeCart">&times;</button>
+    </div>
+    
+    <div class="cart-items" id="cartItems">
+      <!-- Cart items will be populated by JavaScript -->
+      <div class="empty-cart-message" id="emptyCartMessage">
+        <p>Your cart is empty</p>
+        <p>Add some games to your cart!</p>
+      </div>
+    </div>
+    
+    <div class="cart-footer">
+  <div class="total-price">Total: ₹<span id="totalPrice">0.00</span></div>
+      <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

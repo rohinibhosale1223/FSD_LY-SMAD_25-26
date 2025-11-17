@@ -1,0 +1,80 @@
+<%- include('partials/header') %>
+<%- include('partials/navbar') %>
+
+<div class="reviews-container">
+  <div class="container py-5">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h1 class="neon-text">GAME REVIEWS</h1>
+      <p class="neon-subtext">See what our community thinks about the latest games</p>
+    </div>
+    
+    <!-- Review Submission Form -->
+    <div class="glass-card mb-5" data-aos="fade-up">
+      <h3 class="neon-text mb-4">Submit Your Review</h3>
+      <form action="/submit-review" method="POST">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="username" class="form-label neon-label">Your Name</label>
+            <input type="text" class="form-control neon-input" id="username" name="username" placeholder="Enter your name" value="<%= username %>" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="gameTitle" class="form-label neon-label">Game Title</label>
+            <input type="text" class="form-control neon-input" id="gameTitle" name="gameTitle" placeholder="Enter game title" required>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="rating" class="form-label neon-label">Rating</label>
+          <select class="form-select neon-input" id="rating" name="rating" required>
+            <option value="">Select a rating</option>
+            <option value="1">1 Star - Poor</option>
+            <option value="2">2 Stars - Fair</option>
+            <option value="3">3 Stars - Good</option>
+            <option value="4">4 Stars - Great</option>
+            <option value="5">5 Stars - Excellent</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label neon-label">Review</label>
+          <textarea class="form-control neon-input" id="text" name="text" rows="4" placeholder="Share your thoughts about the game..." required></textarea>
+        </div>
+        <button type="submit" class="btn neon-button">Submit Review</button>
+      </form>
+    </div>
+    
+    <!-- Reviews Display -->
+    <div class="row">
+      <% if (reviews && reviews.length > 0) { %>
+        <% reviews.forEach((review, index) => { %>
+          <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
+            <div class="glass-card review-card h-100">
+              <div class="card-body">
+                <h5 class="card-title neon-text"><%= review.gameTitle %></h5>
+                <h6 class="card-subtitle mb-2 neon-subtext"><%= review.username %></h6>
+                <div class="rating mb-2">
+                  <% for(let i = 1; i <= 5; i++) { %>
+                    <% if(i <= review.rating) { %>
+                      <span class="neon-star filled">★</span>
+                    <% } else { %>
+                      <span class="neon-star">★</span>
+                    <% } %>
+                  <% } %>
+                </div>
+                <p class="card-text"><%= review.text %></p>
+                <small class="text-muted"><%= review.date %></small>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      <% } else { %>
+        <div class="col-12">
+          <div class="glass-card text-center p-5" data-aos="fade-up">
+            <h3 class="neon-text">No Reviews Yet</h3>
+            <p class="neon-subtext">Be the first to submit a review!</p>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
