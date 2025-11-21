@@ -1,0 +1,138 @@
+/* Login.css */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom right, #1b2838, #2a475e);
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #171a21;
+  color: #c7d5e0;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  width: 100%;
+  max-width: 900px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8);
+}
+
+.login-content {
+  padding: 3rem 2rem;
+  width: 100%;
+}
+
+.login-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.login-subtext {
+  font-size: 1rem;
+  color: #8f98a0;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-form label {
+  font-size: 1rem;
+  color: #66c0f4;
+}
+
+.login-form input {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #2a475e;
+  color: #fff;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  background-color: #3b5d76;
+  box-shadow: 0 0 8px rgba(102, 192, 244, 0.8);
+}
+
+.login-button {
+  background-color: #66c0f4;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-button:hover {
+  background-color: #528fb7;
+  transform: scale(1.05);
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 1rem;
+  color: #8f98a0;
+  font-size: 0.9rem;
+}
+
+.login-footer a {
+  color: #66c0f4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-footer a:hover {
+  color: #528fb7;
+  text-decoration: underline;
+}
+
+.login-image {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .login-card {
+    flex-direction: row;
+  }
+
+  .login-content {
+    width: 50%;
+    padding: 3rem;
+  }
+
+  .login-image {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: #2a475e;
+  }
+
+  .login-image img {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  }
+}

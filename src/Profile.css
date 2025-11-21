@@ -1,0 +1,101 @@
+.profile-page {
+  padding: 2rem;
+  color: #c7d5e0;
+}
+
+.profile-card {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #2a475e;
+  padding: 2rem;
+  border-radius: 10px;
+  gap: 2rem;
+  align-items: flex-start;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.profile-image img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.profile-image input {
+  display: block;
+  margin-top: 1rem;
+  color: #fff;
+}
+
+.profile-details {
+  flex: 1;
+  min-width: 250px;
+}
+
+.profile-details h2,
+.profile-details h3 {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.profile-details p {
+  margin: 0.5rem 0;
+  color: #8f98a0;
+}
+
+.profile-details input {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+}
+
+.profile-details button {
+  padding: 0.5rem 1rem;
+  background-color: #66c0f4;
+  border: none;
+  border-radius: 5px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile-details button:hover {
+  background-color: #528fb7;
+}
+
+.purchase-history {
+  margin-top: 2rem;
+  background-color: #1b2838;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+
+.purchase-history h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #66c0f4;
+}
+
+.purchase-history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.purchase-history li {
+  background-color: #2a475e;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  color: #fff;
+  transition: background 0.3s;
+}
+
+.purchase-history li:hover {
+  background-color: #3b5d76;
+}
