@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies | BingeBox</title>
+  <!-- Corrected CSS path -->
+  <link rel="stylesheet" href="/Style/movies.css">
+</head>
+<body>
+  <header>
+    <h1>🎬 BingeBox - Explore Movies by Genre</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/movies">Movies</a>
+      <a href="/login">Login</a>
+    </nav>
+  </header>
+
+  <% Object.keys(genres).forEach(genre => { %>
+    <section class="genre-section">
+      <h2><%= genre %></h2>
+      <div class="movie-grid">
+        <% genres[genre].forEach(movie => { %>
+          <div class="movie-card">
+            <img src="<%= movie.image %>" alt="<%= movie.title %>">
+            <h3><%= movie.title %></h3>
+            <p><%= movie.desc %></p>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  <% }) %>
+</body>
+</html>
